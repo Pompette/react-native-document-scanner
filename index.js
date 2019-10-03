@@ -20,6 +20,11 @@ class PdfScanner extends React.Component {
     return this.props.onCrop(event.nativeEvent);
   }
 
+  sendOnCancelCropEvent(event) {
+    if (!this.props.onCancelCrop) return;
+    return this.props.onCancelCrop(event.nativeEvent)
+  }
+
   getImageQuality() {
     if (typeof this.props.quality === "undefined") return 0.8;
     if (this.props.quality > 1) return 1;
@@ -31,14 +36,21 @@ class PdfScanner extends React.Component {
     NativeModules.RNPdfScannerManager.capture();
   }
 
+  startCamera(start = true) {
+    NativeModules.RNPdfScannerManager.startCamera(start);
+  }
+
   render() {
+    const cropperOpts = {
+      saveFile: true,
+      ...this.props.cropperOpts
+    };
+    
     return (
       <RNPdfScanner
         {...this.props}
-        cropperOpts={{
-          saveFile: true,
-          ...this.props.cropperOpts
-        }}
+        cropperOpts={cropperOpts}
+        onCancelCrop={this.sendOnCancelCropEvent.bind(this)}
         onCrop={this.sendOnCropEvent.bind(this)}
         onPictureTaken={this.sendOnPictureTakenEvent.bind(this)}
         onRectangleDetect={this.sendOnRectanleDetectEvent.bind(this)}
@@ -52,6 +64,10 @@ class PdfScanner extends React.Component {
       />
     );
   }
+}
+
+PdfScanner.defaultProps = {
+  onCancelCrop: undefined
 }
 
 PdfScanner.propTypes = {
@@ -68,6 +84,7 @@ PdfScanner.propTypes = {
   detectionCountBeforeCapture: PropTypes.number,
   detectionRefreshRateInMS: PropTypes.number,
   quality: PropTypes.number,
+  onCancelCrop: PropTypes.function,
 };
 
 export default PdfScanner;
