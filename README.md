@@ -21,6 +21,7 @@ Use version >=1.4.1 if you are using react-native 0.48+
 
 <!-- `$ npm install react-native-document-scanner --save` -->
 `npm install git+https://github.com/Pompette/react-native-document-scanner.git`
+
 `$ react-native link react-native-document-scanner`
 
 Edit the `info.plist` file in XCode and add the following permission : `NSCameraUsageDescription`
