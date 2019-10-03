@@ -239,6 +239,12 @@
         }
         _borderDetectTimeKeeper = [NSTimer scheduledTimerWithTimeInterval:detectionRefreshRateInSec target:self selector:@selector(enableBorderDetectFrame) userInfo:nil repeats:YES];
     }
+    // Invalidate timer cannot be reused
+    // Timer was only reinit if _lastDetectionRate != _detectionRefreshRateInMS
+    // It causes that we can play/pause camera, but the border frame was not set up anymore...
+    if (![_borderDetectTimeKeeper isValid]) {
+        _borderDetectTimeKeeper = [NSTimer scheduledTimerWithTimeInterval:detectionRefreshRateInSec target:self selector:@selector(enableBorderDetectFrame) userInfo:nil repeats:YES];
+    }
 
     [self hideGLKView:NO completion:nil];
 

@@ -12,11 +12,6 @@ Features :
  - Easy to use base64 image
  - Native Cropper
 
- #### Can be easily plugged with [react-native-perspective-image-cropper](https://github.com/Michaelvilleneuve/react-native-perspective-image-cropper)
-
-
- ![Demo crop gif](https://camo.githubusercontent.com/0ac887deaa7263172a5fd2759dba3d692e98585a/68747470733a2f2f73332d65752d776573742d312e616d617a6f6e6177732e636f6d2f6d69636861656c76696c6c656e657576652f64656d6f2d63726f702e676966)
-
 ## Getting started
 
 Use version >=1.4.1 if you are using react-native 0.48+
@@ -113,6 +108,7 @@ In order to use the cropper, you must specify onCrop function.
 | Props             | Params                                 | Type     | Description |
 |-------------------|----------------------------------------|----------|-------------|
 | onCrop | `(data)` | `function` | Function called when you press the done button of the cropper |
+| onCancelCrop | `()` | `function` | Function called when you press the cancel button of the cropper |
 
 ### CropperOpts
 
@@ -135,6 +131,18 @@ In order to use the cropper, you must specify onCrop function.
 - Then call :
 ```javascript
 this.scanner.capture();
+```
+
+## Handle play/pause on camera
+
+- First get component ref
+```javascript
+<DocumentScanner ref={(ref) => this.scanner = ref} />
+```
+
+- Then call :
+```javascript
+this.scanner.startCamera(true); // If true will start, if false will stop
 ```
 
 ## Each rectangle detection
