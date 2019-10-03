@@ -1,4 +1,5 @@
-![Demo gif](https://raw.githubusercontent.com/Michaelvilleneuve/react-native-document-scanner/master/images/demo.gif)
+![Demo gif](https://raw.githubusercontent.com/Michaelvilleneuve/react-native-document-scanner/master/images/demo.gif) 
+![Demo cropper](images/embedCrop.gif)
 
 # React Native Document Scanner (iOS only)
 
@@ -100,8 +101,6 @@ class YourComponent extends Component {
 | cropperOpts | `{}` | `object` | Options for the cropper |
 
 ## Cropper
-
-![Demo cropper](images/embedCrop.gif)
 
 In order to use the cropper, you must specify onCrop function.
 
