@@ -7,6 +7,7 @@
 @property (nonatomic, copy) RCTBubblingEventBlock onPictureTaken;
 @property (nonatomic, copy) RCTBubblingEventBlock onRectangleDetect;
 @property (nonatomic, copy) RCTBubblingEventBlock onCrop;
+@property (nonatomic, copy) RCTBubblingEventBlock onCancelCrop;
 @property (nonatomic, copy) NSDictionary * cropperOpts;
 @property (nonatomic, assign) NSInteger detectionCountBeforeCapture;
 @property (assign, nonatomic) NSInteger stableCounter;
@@ -16,5 +17,6 @@
 @property (nonatomic, assign) BOOL saveInAppDocument;
 
 - (void) capture;
+- (void) startCamera:(BOOL)start;
 
 @end
