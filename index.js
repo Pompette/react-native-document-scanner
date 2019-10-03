@@ -66,10 +66,6 @@ class PdfScanner extends React.Component {
   }
 }
 
-PdfScanner.defaultProps = {
-  onCancelCrop: undefined
-}
-
 PdfScanner.propTypes = {
   cropperOpts: PropTypes.object,
   onCrop: PropTypes.func,
