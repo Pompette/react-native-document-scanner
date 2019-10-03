@@ -1,7 +1,7 @@
 ![Demo gif](https://raw.githubusercontent.com/Michaelvilleneuve/react-native-document-scanner/master/images/demo.gif) 
 ![Demo cropper](images/embedCrop.gif)
 
-# React Native Document Scanner (iOS only)
+# React Native Document Scanner and Cropper (iOS only)
 
 Live document detection library. Returns either a URI or a base64 encoded string of the captured image, allowing you to easily store it or use it as you wish !
 
@@ -15,10 +15,12 @@ Features :
 
 ## Getting started
 
+This is a forked version of https://github.com/Michaelvilleneuve/react-native-document-scanner, our versions diverged by the embed native cropper I added. I'm planning to add android scanner-cropper soon (https://github.com/Diastorm/rn-doc-scanner-android).
+
 Use version >=1.4.1 if you are using react-native 0.48+
 
-`$ npm install react-native-document-scanner --save`
-
+<!-- `$ npm install react-native-document-scanner --save` -->
+`npm install git+https://github.com/Pompette/react-native-document-scanner.git`
 `$ react-native link react-native-document-scanner`
 
 Edit the `info.plist` file in XCode and add the following permission : `NSCameraUsageDescription`
@@ -50,6 +52,9 @@ class YourComponent extends Component {
           saveInAppDocument={false}
           onCrop={(data) => {
             console.log('Cropped data : ', data);
+          }}
+          onCancelCrop={() => {
+            console.log('Cancel crop');
           }}
           cropperOpts={{
             base64: true, // false by default
